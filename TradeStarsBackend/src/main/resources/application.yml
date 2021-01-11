@@ -25,10 +25,11 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
     hibernate:
-      ddl-auto: validate
-    properties: 
+      ddl-auto: validate 
+    properties:
+      hibernate: 
         default_schema: ${DB_SCHEMA}
-    show-sql: true
+      show-sql: true
       
   
 ---
@@ -52,7 +53,8 @@ spring:
     hibernate:
       ddl-auto: validate
     properties:
-      default_schema: ${DB_SCHEMA}
-    show-sql: false
+      hibernate:
+        default_schema: ${DB_SCHEMA}
+      show-sql: false
     
     

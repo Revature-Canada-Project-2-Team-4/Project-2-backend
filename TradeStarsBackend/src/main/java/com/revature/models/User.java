@@ -1,11 +1,16 @@
 package com.revature.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "users")
@@ -28,9 +33,10 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "role_id")
-	private int userRole;
 	
+
+	@Column(name = "role_id")
+	private int roleId;
 	@Column(name = "email")
 	private String email;
 	
@@ -39,81 +45,88 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(int userId, String firstName, String lastName, String username, String password, int userRole) {
+	
+
+	public User(int userId, String firstName, String lastName, String username, String password, int role_Id,
+			String email) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
-		this.userRole = userRole;
+		this.roleId = role_Id;
+		this.email = email;
 	}
-	
-	public User(String firstName, String lastName, String username, String password, int userRole) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
-		this.userRole = userRole;
-	}
-	
+
+
+
 	public int getUserId() {
 		return userId;
 	}
-	
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
 	public String getLastName() {
 		return lastName;
 	}
-	
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
-	
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public int getUserRole() {
-		return userRole;
+
+	public int getRole_Id() {
+		return roleId;
 	}
-	
-	public void setUserRole(int userRole) {
-		this.userRole = userRole;
+
+	public void setRole_Id(int role_Id) {
+		this.roleId = role_Id;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+				+ username + ", password=" + password + ", role_Id=" + roleId + ", email=" + email + "]";
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,12 +135,14 @@ public class User {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + roleId;
 		result = prime * result + userId;
-		result = prime * result + userRole;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
-	
+
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -157,9 +172,9 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (userId != other.userId)
+		if (roleId != other.roleId)
 			return false;
-		if (userRole != other.userRole)
+		if (userId != other.userId)
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -169,10 +184,15 @@ public class User {
 		return true;
 	}
 	
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
-				+ username + ", password=" + password + ", userRole=" + userRole + ", email=" + email + "]";
-	}
+	
+	
+	
+	
+	
+	
+	
 
+	
+	
+	
 }
