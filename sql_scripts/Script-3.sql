@@ -7,7 +7,7 @@ set schema 'tradestars';
 set schema 'public';
 
 insert into user_roles(user_role_id, user_role)
-		values(2,'Tradesman');
+		values(1,'Customer');
 
 set schema 'public';	
 insert into users(username, "password", first_name , last_name , email, role_id)

@@ -26,9 +26,10 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: validate 
-    properties: 
+    properties:
+      hibernate: 
         default_schema: ${DB_SCHEMA}
-    show-sql: true
+      show-sql: true
       
   
 ---
@@ -52,7 +53,8 @@ spring:
     hibernate:
       ddl-auto: validate
     properties:
-      default_schema: ${DB_SCHEMA}
-    show-sql: false
+      hibernate:
+        default_schema: ${DB_SCHEMA}
+      show-sql: false
     
     
