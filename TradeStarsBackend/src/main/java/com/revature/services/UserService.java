@@ -2,19 +2,19 @@ package com.revature.services;
 
 import java.util.List;
 
-import com.revature.models.User;
+import com.revature.model.Users;
 
 public interface UserService {
 	
+	public Users saveUsers(Users addUsers);
 	
-	public  List<User> findAllUsers();
-	public User saveUsers(User addUser);
+	public Users findUserById(int id);
 	
-	public User findUserById(int id);
+	public List<Users> findAllUsers();
+
 	
-	
-	//public User findUserByName(String username);
-	
-	//public User findByRole(int UserRole);
+//	public Users findUserByName(String name);
+//	
+//	public Users findByRole(int UserRole);
 
 }
