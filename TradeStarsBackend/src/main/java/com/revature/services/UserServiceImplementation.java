@@ -11,7 +11,7 @@ import com.revature.repositories.IUser;
 @Service
 public class UserServiceImplementation implements UserService {
 	
-	 IUser ud;
+	IUser ud;
 	
 	@Autowired
 	 public UserServiceImplementation(IUser ud ) {

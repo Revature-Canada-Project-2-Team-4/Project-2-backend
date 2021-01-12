@@ -19,7 +19,7 @@ import com.revature.services.UserService;
 @RequestMapping("/users")
 public class UserController {
 	
-private UserService us;
+	private UserService us;
 	
 	@Autowired
 	public UserController(UserService us) {
