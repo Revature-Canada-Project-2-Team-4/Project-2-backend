@@ -13,14 +13,14 @@ public class Services {
     private int serviceId;
 
     @ManyToOne
-    @JoinColumn(name = "service_type")
+    @JoinColumn(name = "service_type", referencedColumnName = "service_type_id")
     private ServiceTypes serviceTypes;
 
     @Column(name = "service_price")
     private int servicePrice;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "provided_by", referencedColumnName = "company_id")
     private Companies providedBy;
 
 	public Services() {

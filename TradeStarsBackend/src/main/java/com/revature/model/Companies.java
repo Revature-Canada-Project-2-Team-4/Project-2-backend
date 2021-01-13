@@ -15,10 +15,16 @@ public class Companies {
     private String companyName;
 
     @Column(name = "company_type")
-    private int companyType;
+    private String companyType;
+    
+    @Column(name = "comapny_address")
+    private String companyAddress;
+    
+    
+
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "company_owner", referencedColumnName = "user_id")
     private Users companyOwner;
 
 	public Companies() {
@@ -26,7 +32,7 @@ public class Companies {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Companies(int companyId, String companyName, int companyType, Users companyOwner) {
+	public Companies(int companyId, String companyName, String companyType, Users companyOwner) {
 		super();
 		this.companyId = companyId;
 		this.companyName = companyName;
@@ -50,11 +56,11 @@ public class Companies {
 		this.companyName = companyName;
 	}
 
-	public int getCompanyType() {
+	public String getCompanyType() {
 		return companyType;
 	}
 
-	public void setCompanyType(int companyType) {
+	public void setCompanyType(String companyType) {
 		this.companyType = companyType;
 	}
 
@@ -79,7 +85,7 @@ public class Companies {
 		result = prime * result + companyId;
 		result = prime * result + ((companyName == null) ? 0 : companyName.hashCode());
 		result = prime * result + ((companyOwner == null) ? 0 : companyOwner.hashCode());
-		result = prime * result + companyType;
+		result = prime * result + ((companyType == null) ? 0 : companyType.hashCode());
 		return result;
 	}
 
@@ -104,11 +110,15 @@ public class Companies {
 				return false;
 		} else if (!companyOwner.equals(other.companyOwner))
 			return false;
-		if (companyType != other.companyType)
+		if (companyType == null) {
+			if (other.companyType != null)
+				return false;
+		} else if (!companyType.equals(other.companyType))
 			return false;
 		return true;
 	}
-    
+
+	
     
     
 }

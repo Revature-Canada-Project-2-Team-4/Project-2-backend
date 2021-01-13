@@ -15,19 +15,19 @@ public class Reviews {
     private String reviewText;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Companies reviewedBy;
+    @JoinColumn(name = "reviewed_by", referencedColumnName = "user_id")
+    private Users reviewedBy;
 
     @ManyToOne
-    @JoinColumn(name = "user_role_id")
-    private Users reviewedFor;
+    @JoinColumn(name = "reviewed_for", referencedColumnName = "company_id")
+    private Companies reviewedFor;
 
 	public Reviews() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reviews(int reviewId, String reviewText, Companies reviewedBy, Users reviewedFor) {
+	public Reviews(int reviewId, String reviewText, Users reviewedBy, Companies reviewedFor) {
 		super();
 		this.reviewId = reviewId;
 		this.reviewText = reviewText;
@@ -51,19 +51,19 @@ public class Reviews {
 		this.reviewText = reviewText;
 	}
 
-	public Companies getReviewedBy() {
+	public Users getReviewedBy() {
 		return reviewedBy;
 	}
 
-	public void setReviewedBy(Companies reviewedBy) {
+	public void setReviewedBy(Users reviewedBy) {
 		this.reviewedBy = reviewedBy;
 	}
 
-	public Users getReviewedFor() {
+	public Companies getReviewedFor() {
 		return reviewedFor;
 	}
 
-	public void setReviewedFor(Users reviewedFor) {
+	public void setReviewedFor(Companies reviewedFor) {
 		this.reviewedFor = reviewedFor;
 	}
 
@@ -112,7 +112,10 @@ public class Reviews {
 			return false;
 		return true;
 	}
-    
-    
+	
+	
+	
+
+	
 
 }
