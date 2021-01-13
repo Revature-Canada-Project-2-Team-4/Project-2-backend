@@ -15,11 +15,11 @@ public class Appointments {
     private int appointmentId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name="customer_id",referencedColumnName = "user_id")
     private Users customerId;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company_id", referencedColumnName = "company_id")
     private Companies companyId;
 
     @Column(name = "appointment_start")
@@ -32,7 +32,7 @@ public class Appointments {
     private boolean appointmentConfirmed;
 
     @ManyToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name="for_service", referencedColumnName = "service_id")
     private Services forService;
 
     @Column(name = "appointment_completed")

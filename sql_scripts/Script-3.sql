@@ -3,23 +3,38 @@
 drop schema if exists tradestars cascade;
 create schema tradestars;
 set schema 'tradestars';
+SELECT * FROM tradestars.users
 
-set schema 'public';
-
+set schema 'trading';
 insert into user_roles(user_role_id, user_role)
 		values(1,'Customer');
+	
+	insert into user_roles(user_role_id, user_role)
+		values(2,'Tradesman');
 
-set schema 'public';	
-insert into users(username, "password", first_name , last_name , email, role_id)
-		values('Annie', '12345', 'Deep', 'singh','deep@gmail.com', 1);
 
 set schema 'public';
+
+set schema 'trading';
+insert into users(username, "password", first_name , last_name , email, role_id)
+		values('harsh', '12345', 'deep', 'singh','deep@gmail.com', 2);
+insert into users(username, "password", first_name , last_name , email, role_id)
+		values('rammi', '12345', 'rammi', 'singh','rammi@gmail.com', 1);
+
+set schema 'tradestars';
+
+set schema 'trading';
+insert  into service_types(service_type) values('Pest Control');
 	
 create table service_types(
 	service_type_id serial primary key,
 	service_type text not null
 );
 
+set schema 'trading';
+
+insert into companies(company_name, company_type, company_owner) 
+			values('NextReno', 'renovation', 1)
 
 
 create table companies(
