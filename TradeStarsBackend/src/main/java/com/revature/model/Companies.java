@@ -16,6 +16,9 @@ public class Companies {
 
     @Column(name = "company_type")
     private int companyType;
+    
+    @Column(name = "comapny_address")
+    private String companyAddress;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
