@@ -35,7 +35,7 @@ public class ReviewsController {
 	
 	
 	@PostMapping
-	public ResponseEntity<Reviews> saveNewUser(@RequestBody Reviews review){
+	public ResponseEntity<Reviews> saveNewReview(@RequestBody Reviews review){
 		//Here we call database to get data 
 		return new ResponseEntity<Reviews>(reviewService.saveReviews(review), HttpStatus.CREATED);
 		
