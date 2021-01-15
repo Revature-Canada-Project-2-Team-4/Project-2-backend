@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.model.Companies;
+import com.revature.model.Users;
 import com.revature.repositories.ICompanies;
 
 @Service
@@ -33,6 +34,14 @@ public class CompaniesServiceImplementation implements CompaniesService {
 	public List<Companies> findAllCompany() {
 		
 		return comp.findAll();
+	}
+
+	@Override
+	public Companies findCompanyByOwner(int ownerId) {
+		Users u = new Users();
+		u.setUserId(ownerId);
+		System.out.println(ownerId);
+		return comp.findCompaniesByCompanyOwner(u);
 	}
 
 }
