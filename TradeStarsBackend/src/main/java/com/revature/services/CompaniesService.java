@@ -10,6 +10,8 @@ public interface CompaniesService {
 	
 	public Companies findCompanyById(int id);
 	
+	public Companies findCompanyByOwner(int ownerId);
+	
 	public List<Companies> findAllCompany();
 
 

@@ -6,6 +6,8 @@ import com.revature.model.Reviews;
 
 public interface ReviewsService {
 	
+	public List<Reviews> findReviewsByCompanyId(int companyId);
+	
 	
 	public Reviews saveReviews(Reviews saveReviews);
 	

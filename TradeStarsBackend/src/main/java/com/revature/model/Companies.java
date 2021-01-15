@@ -13,9 +13,6 @@ public class Companies {
 
     @Column(name = "company_name")
     private String companyName;
-
-    @Column(name = "company_type")
-    private String companyType;
     
     @Column(name = "comapny_address")
     private String companyAddress;
@@ -36,7 +33,6 @@ public class Companies {
 		super();
 		this.companyId = companyId;
 		this.companyName = companyName;
-		this.companyType = companyType;
 		this.companyOwner = companyOwner;
 	}
 
@@ -56,14 +52,6 @@ public class Companies {
 		this.companyName = companyName;
 	}
 
-	public String getCompanyType() {
-		return companyType;
-	}
-
-	public void setCompanyType(String companyType) {
-		this.companyType = companyType;
-	}
-
 	public Users getCompanyOwner() {
 		return companyOwner;
 	}
@@ -74,8 +62,7 @@ public class Companies {
 
 	@Override
 	public String toString() {
-		return "Companies [companyId=" + companyId + ", companyName=" + companyName + ", companyType=" + companyType
-				+ ", companyOwner=" + companyOwner + "]";
+		return "Companies [companyId=" + companyId + ", companyName=" + companyName + ", companyOwner=" + companyOwner + "]";
 	}
 
 	@Override
@@ -85,7 +72,6 @@ public class Companies {
 		result = prime * result + companyId;
 		result = prime * result + ((companyName == null) ? 0 : companyName.hashCode());
 		result = prime * result + ((companyOwner == null) ? 0 : companyOwner.hashCode());
-		result = prime * result + ((companyType == null) ? 0 : companyType.hashCode());
 		return result;
 	}
 
@@ -109,11 +95,6 @@ public class Companies {
 			if (other.companyOwner != null)
 				return false;
 		} else if (!companyOwner.equals(other.companyOwner))
-			return false;
-		if (companyType == null) {
-			if (other.companyType != null)
-				return false;
-		} else if (!companyType.equals(other.companyType))
 			return false;
 		return true;
 	}
