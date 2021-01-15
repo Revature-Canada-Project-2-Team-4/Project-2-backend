@@ -39,6 +39,11 @@ private AppointmentsService as;
 	public ResponseEntity<List<Appointments>> findAppointmentsByCompanyId(@PathVariable int companyId){
 		return new ResponseEntity<List<Appointments>>(as.getAppointmentsByCompanyId(companyId), HttpStatus.OK);
 	}
+	
+	@GetMapping("/customer/{customerId}")
+	public ResponseEntity<List<Appointments>> findAppointmentsByCustomerId(@PathVariable int customerId){
+		return new ResponseEntity<List<Appointments>>(as.getAppointmentsByCustomerId(customerId), HttpStatus.OK);
+	}
 
 	@PostMapping
 	public ResponseEntity<Appointments> saveNewAppointment(@RequestBody Appointments a){

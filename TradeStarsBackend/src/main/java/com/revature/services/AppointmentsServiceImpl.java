@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.model.Appointments;
 import com.revature.model.Companies;
+import com.revature.model.Users;
 import com.revature.repositories.IAppointments;
 
 @Service
@@ -22,9 +23,10 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 	
 
 	@Override
-	public List<Appointments> getAppointmentsByCustomer() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Appointments> getAppointmentsByCustomerId(int customerId) {
+		Users u = new Users();
+		u.setUserId(customerId);
+		return appts.findAppointmentsByCustomerId(u);
 	}
 	
 	
