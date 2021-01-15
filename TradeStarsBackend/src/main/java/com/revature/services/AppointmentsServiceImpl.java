@@ -26,6 +26,8 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 	@Override
 	public List<Appointments> getAppointmentsByCompanyId(int companyId) {
@@ -44,6 +46,14 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 	@Override
 	public Appointments saveAppointment(Appointments a) {
 		return appts.saveAndFlush(a);
+	}
+
+
+
+	@Override
+	public void updateAppointment(boolean appointmentConfirmed, int appointmentId) {
+				
+		 appts.updateAppointments(appointmentConfirmed, appointmentId);
 	}
 
 }
