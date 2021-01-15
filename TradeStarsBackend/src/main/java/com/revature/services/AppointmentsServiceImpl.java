@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.model.Appointments;
+import com.revature.model.Companies;
 import com.revature.repositories.IAppointments;
 
 @Service
@@ -25,11 +26,15 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 	@Override
-	public List<Appointments> getAppointmentsByCompany() {
+	public List<Appointments> getAppointmentsByCompanyId(int companyId) {
 		// TODO Auto-generated method stub
-		return null;
+		Companies c = new Companies();
+		c.setCompanyId(companyId);
+		return appts.findAppointmentsByCompanyId(c);
 	}
 
 	@Override
@@ -41,6 +46,14 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 	@Override
 	public Appointments saveAppointment(Appointments a) {
 		return appts.saveAndFlush(a);
+	}
+
+
+
+	@Override
+	public void updateAppointment(boolean appointmentConfirmed, int appointmentId) {
+				
+		 appts.updateAppointments(appointmentConfirmed, appointmentId);
 	}
 
 }
