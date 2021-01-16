@@ -52,16 +52,7 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 
 
 	@Override
-	public void updateAppointment(boolean appointmentConfirmed, int appointmentId) {
-				
-		 appts.updateAppointments(appointmentConfirmed, appointmentId);
-	}
-
-	@Override
-	public Appointments updateAppointmentCompletion(int appointmentId, boolean appointmentCompleted) {
-		Appointments a = appts.getOne(appointmentId);
-		System.out.println(a);
-		a.setAppointmentCompleted(appointmentCompleted);
+	public Appointments updateAppointment(Appointments a) {
 		return appts.saveAndFlush(a);
 	}
 

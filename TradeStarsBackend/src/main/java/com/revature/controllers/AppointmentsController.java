@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,23 +48,26 @@ private AppointmentsService as;
 
 	@PostMapping
 	public ResponseEntity<Appointments> saveNewAppointment(@RequestBody Appointments a){
-		
 		return new ResponseEntity<Appointments>(as.saveAppointment(a), HttpStatus.OK);
-		
 	}
-	
-	@PutMapping("/completed/{appointmentId}")
-	public ResponseEntity<Appointments> saveNewAppointment(@PathVariable int appointmentId, @RequestBody boolean appointmentCompleted){
-		return new ResponseEntity<Appointments>(as.updateAppointmentCompletion(appointmentId, appointmentCompleted), HttpStatus.OK);
-	}
-	
 	
 	@PutMapping
-	public void UpdateAppointments(@RequestParam boolean appointmentConfirmed, @RequestParam int appointmentId){
-		
-	 as.updateAppointment(appointmentConfirmed, appointmentId);
-	 
-		
+	public ResponseEntity<Appointments> updateAppointment(@RequestBody Appointments a){
+		return new ResponseEntity<Appointments>(as.updateAppointment(a), HttpStatus.OK);
 	}
+	
+	
+//	@PutMapping
+//	public void UpdateAppointments(@RequestParam boolean appointmentConfirmed, @RequestParam int appointmentId){
+//		
+//	 as.updateAppointment(appointmentConfirmed, appointmentId);
+//	 
+//		
+//	}
+	
+//	@DeleteMapping("/{appointmentId")
+//	public ResponseEntity<> deleteAppointmentById(@PathVariable int appointmentId) {
+//		return new ResponseEntity<void>(as.updateAppointmentCompletion(appointmentId, appointmentCompleted), HttpStatus.OK);
+//	}
 
 }

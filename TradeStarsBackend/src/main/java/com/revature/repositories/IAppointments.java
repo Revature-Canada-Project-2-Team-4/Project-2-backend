@@ -18,10 +18,5 @@ public interface IAppointments extends JpaRepository<Appointments, Integer> {
 	public List<Appointments> findAppointmentsByCompanyId(Companies c);
 	
 	public List<Appointments> findAppointmentsByCustomerId(Users u);
-	
-	@Transactional
-	@Modifying
-	@Query("update Appointments a set a.appointmentConfirmed=?1 where a.appointmentId=?2")
-	public void updateAppointments(boolean appointmentConfirmed, int appointmentId );
 
 }

@@ -2,6 +2,8 @@ package com.revature.model;
 
 
 
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +19,7 @@ public class Services {
     private ServiceTypes serviceTypes;
 
     @Column(name = "service_price")
-    private int servicePrice;
+    private BigDecimal servicePrice;
 
     @ManyToOne
     @JoinColumn(name = "provided_by", referencedColumnName = "company_id")
@@ -28,7 +30,7 @@ public class Services {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Services(int serviceId, ServiceTypes serviceTypes, int servicePrice, Companies providedBy) {
+	public Services(int serviceId, ServiceTypes serviceTypes, BigDecimal servicePrice, Companies providedBy) {
 		super();
 		this.serviceId = serviceId;
 		this.serviceTypes = serviceTypes;
@@ -52,11 +54,11 @@ public class Services {
 		this.serviceTypes = serviceTypes;
 	}
 
-	public int getServicePrice() {
+	public BigDecimal getServicePrice() {
 		return servicePrice;
 	}
 
-	public void setServicePrice(int servicePrice) {
+	public void setServicePrice(BigDecimal servicePrice) {
 		this.servicePrice = servicePrice;
 	}
 
@@ -80,7 +82,7 @@ public class Services {
 		int result = 1;
 		result = prime * result + ((providedBy == null) ? 0 : providedBy.hashCode());
 		result = prime * result + serviceId;
-		result = prime * result + servicePrice;
+		result = prime * result + ((servicePrice == null) ? 0 : servicePrice.hashCode());
 		result = prime * result + ((serviceTypes == null) ? 0 : serviceTypes.hashCode());
 		return result;
 	}
@@ -101,7 +103,10 @@ public class Services {
 			return false;
 		if (serviceId != other.serviceId)
 			return false;
-		if (servicePrice != other.servicePrice)
+		if (servicePrice == null) {
+			if (other.servicePrice != null)
+				return false;
+		} else if (!servicePrice.equals(other.servicePrice))
 			return false;
 		if (serviceTypes == null) {
 			if (other.serviceTypes != null)
@@ -110,6 +115,8 @@ public class Services {
 			return false;
 		return true;
 	}
+
+
     
     
 
