@@ -11,4 +11,5 @@ public interface AppointmentsService {
 	public List<Appointments> getAllAppointments();
 	public Appointments saveAppointment(Appointments a); 
 	public void updateAppointment(boolean appointmentConfirmed, int appointmentId);
+	public Appointments updateAppointmentCompletion(int appointmentId, boolean appointmentCompleted);
 }

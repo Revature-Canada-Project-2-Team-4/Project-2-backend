@@ -52,11 +52,17 @@ private AppointmentsService as;
 		
 	}
 	
+	@PutMapping("/completed/{appointmentId}")
+	public ResponseEntity<Appointments> saveNewAppointment(@PathVariable int appointmentId, @RequestBody boolean appointmentCompleted){
+		return new ResponseEntity<Appointments>(as.updateAppointmentCompletion(appointmentId, appointmentCompleted), HttpStatus.OK);
+	}
+	
 	
 	@PutMapping
 	public void UpdateAppointments(@RequestParam boolean appointmentConfirmed, @RequestParam int appointmentId){
 		
 	 as.updateAppointment(appointmentConfirmed, appointmentId);
+	 
 		
 	}
 
