@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.model.ServiceTypes;
 import com.revature.model.Services;
 import com.revature.model.Users;
 import com.revature.services.ServiceOfferingService;
@@ -28,6 +29,13 @@ public class ServiceOfferingController {
 	public ResponseEntity<List<Services>> findAllServices(){
 		
 		return new ResponseEntity<List<Services>>(sos.getAllServices(), HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("/types")
+	public ResponseEntity<List<ServiceTypes>> findAllServiceTypes(){
+		
+		return new ResponseEntity<List<ServiceTypes>>(sos.getAllServiceTypes(), HttpStatus.OK);
 		
 	}
 }
