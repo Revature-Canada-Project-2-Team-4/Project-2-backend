@@ -51,4 +51,10 @@ public class ServiceOfferingServiceImplementation implements ServiceOfferingServ
 		return st.findAll();
 	}
 
+	@Override
+	public Services saveServices(Services addServices) {
+		
+		return so.saveAndFlush(addServices);
+	}
+
 }

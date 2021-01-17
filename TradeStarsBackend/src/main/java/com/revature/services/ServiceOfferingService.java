@@ -13,4 +13,6 @@ public interface ServiceOfferingService {
 	public List<Services> getServicesById(int serviceId);
 	public List<ServiceTypes> getAllServiceTypes();
 	
+	public Services saveServices(Services addServices);
+	
 }
