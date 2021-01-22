@@ -1,35 +1,49 @@
 package com.revature.services;
 
-import com.revature.models.User;
-import com.revature.repositories.UserDao;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.revature.model.Users;
+import com.revature.repositories.IUser;
+
+@Service
 public class UserServiceImplementation implements UserService {
 	
-	private UserDao ud;
+	IUser ud;
 	
-	 public UserServiceImplementation(UserDao ud ) {
+	@Autowired
+	 public UserServiceImplementation(IUser ud ) {
 		
 		this.ud = ud;
 	}
 
 	@Override
-	public User saveUsers(User addUser) {
-		return ud.saveAndFlush(addUser);
+	public Users saveUsers(Users addUsers) {
+		return ud.saveAndFlush(addUsers);
 	}
 
 	@Override
-	public User findUserById(int id) {
+	public Users findUserById(int id) {
 		return ud.getOne(id);
 	}
 
 	@Override
-	public User findUserByName(String name) {
-		return ud.findUserByName(name);
+	public List<Users> findAllUsers() {
+		return ud.findAll();
 	}
 
-	@Override
-	public User findByRole(int userRole) {
-		return ud.findUserByRole(userRole);
-	}
+//	@Override
+//	public Users findUserByName(String name) {
+//		//return ud.findUserByName(name);
+//	 return new Users();
+//	 }
+//
+//	@Override
+//	public Users findByRole(int userRole) {
+//		//return ud.findUserByRole(userRole);
+//		return new Users();
+//	}
 
 }
